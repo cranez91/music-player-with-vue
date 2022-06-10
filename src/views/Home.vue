@@ -2,7 +2,7 @@
   <div class="w-full h-screen flex flex-col bg-gray-100 overflow-hidden" id="demo_wrap">
     
     <div class="flex flex-row justify-center w-full m-auto relative z-10" style="height:90%">
-        <div class="flex flex-col w-full md:w-5/12 bg-gray-900 rounded-lg">
+        <div class="flex flex-col w-full md:w-5/12 bg-gray-900">
             <div class="m-auto w-4/5 mt-4 mb-0">
                 <div v-for="(audio,indexo) in audios.slice(index,index+1)" :key="indexo" class="mb-4">
                     <h3 class="text-xl text-grey-darkest font-semibold">{{audio.name}}</h3>
