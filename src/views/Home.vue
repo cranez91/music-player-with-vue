@@ -5,8 +5,8 @@
         <div class="flex flex-col w-full md:w-5/12 bg-gray-900">
             <div class="m-auto w-4/5 mt-4 mb-0">
                 <div v-for="(audio,indexo) in audios.slice(index,index+1)" :key="indexo" class="mb-4">
-                    <h3 class="text-xl text-grey-darkest font-semibold">{{audio.name}}</h3>
-                    <p class="text-sm text-grey mt-1">{{audio.artist}}</p>
+                    <h3 class="text-xl text-yellow-400 font-semibold">{{audio.name}}</h3>
+                    <p class="text-sm text-gray-300 mt-1">{{audio.artist}}</p>
                 </div> 
                 <div class="m-auto relative" style="width:300px;height:300px">
                     <img class="w-full rounded-full block m-auto h-full" src="../assets/vintage-looking-vinyl-record.jpg" alt="Album Pic">
@@ -37,8 +37,8 @@
             </div>
       </div>
       <div class="w-7/12 hidden md:block">
-          <ul class="w-full overflow-auto m-auto mb-2 bg-gray-900 pt-2" style="max-height:100%" id="journal-scroll">
-              <li @click="selectSound(indexo)" :style="indexo == index ? '' : ''" :class="indexo == index ? 'bg-gradient-to-r from-yellow-500 via-yellow-600 to-yellow-700 text-white':''" class="flex py-1 rounded cursor-pointer w-11/12 m-auto" v-for="(audio,indexo) in audios" :key="indexo">
+          <ul class="w-full h-full overflow-auto m-auto mb-2 bg-gray-900 pt-2" style="max-height:100%" id="journal-scroll">
+              <li @click="selectSound(indexo)" :style="indexo == index ? '' : ''" :class="indexo == index ? 'bg-gradient-to-r from-yellow-700 via-yellow-600 to-yellow-500 text-white':''" class="flex py-1 rounded cursor-pointer w-11/12 m-auto" v-for="(audio,indexo) in audios" :key="indexo">
                   <div class="w-1/5 font-semibold m-auto">
                       {{indexo + 1}}
                   </div>
@@ -99,11 +99,11 @@
                 </div>  
                 <div class="w-9/12 md:w-10/12 m-auto relative">
                     <div @click="volume($event)" ref="volBar" class="h-1 bg-grey-dark cursor-pointer rounded-full bg-gray-500 m-auto relative" style="width:100%">
-                        <div class="flex justify-end h-1 bg-gradient-to-r from-teal-400 to-blue-500 rounded-full relative" :style="{'width' : volumeProgress + '%'}">
+                        <div class="flex justify-end h-1 bg-gradient-to-r from-yellow-500 to-yellow-600 rounded-full relative" :style="{'width' : volumeProgress + '%'}">
                         </div>
                     </div>
                     <div class="flex justify-end h-1 rounded-full relative" :style="{'width' : volumeProgress + '%'}">
-                        <span id="progressButtonVolume" class="w-3 h-3 md:w-4 md:h-4 bg-gradient-to-r from-teal-400 to-blue-500 absolute pin-r pin-b -mb-1 rounded-full shadow"></span>
+                        <span id="progressButtonVolume" class="w-3 h-3 md:w-4 md:h-4 bg-gradient-to-r from-yellow-500 to-yellow-600 absolute pin-r pin-b -mb-1 rounded-full shadow"></span>
                     </div>
                 </div>
             </div>
@@ -114,9 +114,15 @@
 
 <script>
 import {ref,reactive,computed} from 'vue';
-import A1 from "@/music/A1.mp3";
-import A2 from "@/music/A2.mp3";
-import A3 from "@/music/A3.mp3";
+import ArmeeDerTristen from "@/music/ArmeeDerTristen.mp3";
+import Zeit from "@/music/Zeit.mp3";
+import ZickZack from "@/music/ZickZack.mp3";
+
+import Angst from "@/music/Angst.mp3";
+import DickeTitten from "@/music/DickeTitten.mp3";
+import MeineTranen from "@/music/MeineTranen.mp3";
+import Lugen from "@/music/Lugen.mp3";
+
 import { Howl, Howler } from 'howler';
 export default {
     mounted(){ 
@@ -126,22 +132,13 @@ export default {
     },
     setup(){
         const audios = ref([
-            {name: 'Silver Spirit',file: A1,artist: 'Shamika Cox' ,howl: null},
-            {name: 'Dance With Me',file: A2,artist: 'Ehrling' ,howl: null},
-            {name: 'Children',file: A3,artist: 'SKYBAR' ,howl: null},
-            {name: 'Silver Spirit',file: A1,artist: 'Shamika Cox' ,howl: null},
-            {name: 'Dance With Me',file: A2,artist: 'Ehrling' ,howl: null},
-            {name: 'Children',file: A3,artist: 'SKYBAR' ,howl: null},
-            {name: 'Silver Spirit',file: A1,artist: 'Shamika Cox' ,howl: null},
-            {name: 'Dance With Me',file: A2,artist: 'Ehrling' ,howl: null},
-            {name: 'Children',file: A3,artist: 'SKYBAR' ,howl: null},
-            {name: 'Silver Spirit',file: A1,artist: 'Shamika Cox' ,howl: null},
-            {name: 'Dance With Me',file: A2,artist: 'Ehrling' ,howl: null},
-            {name: 'Children',file: A3,artist: 'SKYBAR' ,howl: null},
-            {name: 'Silver Spirit',file: A1,artist: 'Shamika Cox' ,howl: null},
-            {name: 'Dance With Me',file: A2,artist: 'Ehrling' ,howl: null},
-            {name: 'Children',file: A3,artist: 'SKYBAR' ,howl: null},
-                         
+            {name: 'Armee der tristen',file: ArmeeDerTristen, artist: 'Rammstein' ,howl: null},
+            {name: 'Zeit',file: Zeit, artist: 'Rammstein' ,howl: null},
+            {name: 'Zick Zack',file: ZickZack, artist: 'Rammstein' ,howl: null},
+            {name: 'Angst',file: Angst, artist: 'Rammstein' ,howl: null},
+            {name: 'Dicke Titten',file: DickeTitten, artist: 'Rammstein' ,howl: null},
+            {name: 'Meine Tranen',file: MeineTranen, artist: 'Rammstein' ,howl: null},
+            {name: 'Lugen',file: Lugen, artist: 'Rammstein' ,howl: null},
         ]);
         const step =  ref(0);
         const nextButton = ref(true);
@@ -290,9 +287,7 @@ export default {
             mutePlayer.value ? mutePlayer.value = false : '';
             audio && audio.mute(true) ?  audio.mute(false) : '';
             if (!audio) {
-           
                 index.value = audios.value.length - 1;
-                 
             }else if (audio && index.value == 0) {
                 audio.stop();
                 repeat.value ? index.value = index.value
@@ -302,36 +297,24 @@ export default {
                 : index.value = audios.value.length - 1;              
             } 
             else if(audio){    
-                            
-                
                 audio.stop();
-                
                 repeat.value ? index.value = index.value
                 :
                 random.value ? index.value = Math.floor(Math.random() * audios.value.length)
-                  
                 : index.value --;
-                
-                
             } 
-            
-           
             play();
         }
         function selectSound(indexSelected) {
             var audio = audios.value[index.value].howl;
-            
             if (audio) {
                 audio.stop();
                 state.audioPlaying[index.value] = false;
-            }
+            } 
             index.value = indexSelected;
-            
             play();
-            
         }
         function volume(event){
-    
             var per = event.layerX / parseFloat(volBar.value.scrollWidth);
             var barWidth = (per * 100) / 100;
             volumeProgress.value = barWidth * 100;
@@ -339,15 +322,11 @@ export default {
             Howler.volume(per);
         }
         function mute() {
-            
             var audio = audios.value[index.value].howl;
-            
             if (audio) {
                mutePlayer.value  = !mutePlayer.value;
-               
                mutePlayer.value ? audio.mute(true) : audio.mute(false)
             }
-            
         }
         
         return{

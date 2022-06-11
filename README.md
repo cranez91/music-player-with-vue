@@ -1,4 +1,4 @@
-# music-app
+# music-player-with-vue
 
 ## Project setup
 ```
