@@ -115,12 +115,8 @@
 <script>
 import {ref,reactive,computed} from 'vue';
 import ArmeeDerTristen from "@/music/ArmeeDerTristen.mp3";
-import Zeit from "@/music/Zeit.mp3";
-import ZickZack from "@/music/ZickZack.mp3";
-
 import Angst from "@/music/Angst.mp3";
 import DickeTitten from "@/music/DickeTitten.mp3";
-import MeineTranen from "@/music/MeineTranen.mp3";
 import Lugen from "@/music/Lugen.mp3";
 
 import { Howl, Howler } from 'howler';
@@ -133,11 +129,8 @@ export default {
     setup(){
         const audios = ref([
             {name: 'Armee der tristen',file: ArmeeDerTristen, artist: 'Rammstein' ,howl: null},
-            {name: 'Zeit',file: Zeit, artist: 'Rammstein' ,howl: null},
-            {name: 'Zick Zack',file: ZickZack, artist: 'Rammstein' ,howl: null},
             {name: 'Angst',file: Angst, artist: 'Rammstein' ,howl: null},
             {name: 'Dicke Titten',file: DickeTitten, artist: 'Rammstein' ,howl: null},
-            {name: 'Meine Tranen',file: MeineTranen, artist: 'Rammstein' ,howl: null},
             {name: 'Lugen',file: Lugen, artist: 'Rammstein' ,howl: null},
         ]);
         const step =  ref(0);
